@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 140%;
+  color: turquoise;
+  font-family: Montserrat;
+  font-size: 20px;
+  text-align: center;
+ }
+
+#textButton {
+  font-size: 12px;
+  margin-top: 0px;
+}
+
+.btn-default {
+  background-color: white;
+  border-color: gray;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 3px;
+  color: gray;
+  font-family: sans-serif;
+  font-size: 30px;
+  outline-style: none;
+}
+
+footer {
+  font-family: "Indie Flower";
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.link {
+  color: magenta;
+  text-decoration: none;
+}
