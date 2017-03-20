@@ -9,7 +9,7 @@ $(document).ready(function () {
     long = data.lon
     $('#data').html('Latitude: ' + lat + '<br>Longitude: ' + long)
 
-    var weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=8c77ee9a6bfdf409302c99e062da2cad'
+    var weatherAPI = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=8c77ee9a6bfdf409302c99e062da2cad'
     $.getJSON(weatherAPI, function (data) {
       var weatherType = data.weather[0].description
       var kelvinTemp = data.main.temp
