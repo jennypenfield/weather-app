@@ -1,26 +1,23 @@
 /* global $ */
 
 $(document).ready(function () {
-  var currentTime = (new Date()).getTime() / 1000 // get current time to compare with sunrise/sunset
-  var lat
-  var long
+  let currentTime = (new Date()).getTime() / 1000 // get current time to compare with sunrise/sunset
   $.getJSON('http://ip-api.com/json', function (data) {
-    lat = data.lat
-    long = data.lon
-    $('#data').html('Latitude: ' + lat + '<br>Longitude: ' + long)
-    var weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat +
-    '&lon=' + long + '&appid=8c77ee9a6bfdf409302c99e062da2cad'
+    let city = data.city
+    // $('#data').html('Latitude: ' + lat + '<br>Longitude: ' + long)
+    let weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q=' + city +
+    '&appid=8c77ee9a6bfdf409302c99e062da2cad'
     $.getJSON(weatherAPI, function (data) {
-      var weatherType = data.weather[0].description
-      var kelvinTemp = data.main.temp
-      var fahrenheitTemp = Math.round((kelvinTemp * (9 / 5) - 459.67), 2)  // temperature conversion from Kelvin to Fahrenheit
-      var celsiusTemp = Math.round(kelvinTemp - 273)
-      var city = data.name
-      var country1 = data.sys.country
-      var humidity = data.main.humidity
-      var windSpeed = (data.wind.speed * 2.237).toFixed(1)
-      var sunriseTime = data.sys.sunrise
-      var sunsetTime = data.sys.sunset
+      let weatherType = data.weather[0].description
+      let kelvinTemp = data.main.temp
+      let fahrenheitTemp = Math.round((kelvinTemp * (9 / 5) - 459.67), 2)  // temperature conversion from Kelvin to Fahrenheit
+      let celsiusTemp = Math.round(kelvinTemp - 273)
+      let city = data.name
+      let country1 = data.sys.country
+      let humidity = data.main.humidity
+      let windSpeed = (data.wind.speed * 2.237).toFixed(1)
+      let sunriseTime = data.sys.sunrise
+      let sunsetTime = data.sys.sunset
 
       $('#city').html(city + ', ' + country1)
       $('#weatherType').html(weatherType)
@@ -93,7 +90,7 @@ $(document).ready(function () {
             $('body').css('background-image', 'url(http://cdn.wallpapersafari.com/33/25/yc1j3g.jpg)')
             break
           case 'light rain':
-            $('body').css({'background-image': 'url(hhttp://cdn.wallpapersafari.com/64/76/MPvArD.jpg',
+            $('body').css({'background-image': 'url(hhttp://cdn.wallpapersafari.com/64/76/MPletD.jpg',
               'color': 'white'})
             break
           case 'snow':
@@ -104,7 +101,7 @@ $(document).ready(function () {
         }
       }
 
-      var tempUnits = 'F'
+      let tempUnits = 'F'
       $('#fahrenheitTemp').on('click', function () {
         if (tempUnits === 'F') {
           $('#fahrenheitTemp').html(celsiusTemp + '&#8451')
