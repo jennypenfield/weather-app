@@ -1,15 +1,15 @@
+/* global $ */
+
 $(document).ready(function () {
   var currentTime = (new Date()).getTime() / 1000 // get current time to compare with sunrise/sunset
-
   var lat
   var long
-
-  $.getJSON('https://ip-api.com/json', function (data) {
+  $.getJSON('http://ip-api.com/json', function (data) {
     lat = data.lat
     long = data.lon
     $('#data').html('Latitude: ' + lat + '<br>Longitude: ' + long)
-
-    var weatherAPI = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=8c77ee9a6bfdf409302c99e062da2cad'
+    var weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat +
+    '&lon=' + long + '&appid=8c77ee9a6bfdf409302c99e062da2cad'
     $.getJSON(weatherAPI, function (data) {
       var weatherType = data.weather[0].description
       var kelvinTemp = data.main.temp
@@ -70,7 +70,8 @@ $(document).ready(function () {
   {
         switch (weatherType) {
           case 'clouds':
-            $('body').css({'background-image': 'url(http://cdn.wallpapersafari.com/49/19/KHf48W.jpg)', 'color': 'black'})
+            $('body').css({'background-image': 'url(http://cdn.wallpapersafari.com/49/19/KHf48W.jpg)',
+              'color': 'black'})
             break
           case 'few clouds':
           case 'scattered clouds':
@@ -80,7 +81,7 @@ $(document).ready(function () {
             break
           case 'clear sky':
           case 'clear':
-                    $('body').css('background-image', 'url(http://cdn.wallpapersafari.com/8/67/2NI5bY.gif)')
+            $('body').css('background-image', 'url(http://cdn.wallpapersafari.com/8/67/2NI5bY.gif)')
             break
           case 'fog':
             $('body').css('background-image', 'url(http://cdn.wallpapersafari.com/12/44/SIdrh1.jpg)')
@@ -92,10 +93,12 @@ $(document).ready(function () {
             $('body').css('background-image', 'url(http://cdn.wallpapersafari.com/33/25/yc1j3g.jpg)')
             break
           case 'light rain':
-            $('body').css({'background-image': 'url(hhttp://cdn.wallpapersafari.com/64/76/MPvArD.jpg', 'color': 'white'})
+            $('body').css({'background-image': 'url(hhttp://cdn.wallpapersafari.com/64/76/MPvArD.jpg',
+              'color': 'white'})
             break
           case 'snow':
-            $('body').css({'background-image': 'url(http://cdn.wallpapersafari.com/40/68/Ll1sMY.jpeg)', 'color': 'magenta'})
+            $('body').css({'background-image': 'url(http://cdn.wallpapersafari.com/40/68/Ll1sMY.jpeg)',
+              'color': 'magenta'})
             break
           default: $('body').css('background-color', 'black')
         }
